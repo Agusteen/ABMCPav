@@ -11,6 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import entidades.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -32,11 +34,34 @@ public class Consulta extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String con = request.getParameter("lblConsulta");
-
+            
+            Resultado r = new Resultado();
+            r.obtenerDatos("G:\\DocPrueba\\1.txt");
+            ListaResultados.getInstance().getLista().add(r);
+            
+            Resultado r1 = new Resultado();
+            r1.obtenerDatos("G:\\DocPrueba\\2.txt");
+            ListaResultados.getInstance().getLista().add(r1);
+            
+            Resultado r2 = new Resultado();
+            r2.obtenerDatos("G:\\DocPrueba\\3.txt");
+            ListaResultados.getInstance().getLista().add(r2);
+            
+            Resultado r3 = new Resultado();
+            r3.obtenerDatos("G:\\DocPrueba\\4.txt");
+            ListaResultados.getInstance().getLista().add(r3);
             response.sendRedirect("ResultadoBusqueda.jsp?consulta=" + con);
+            
 
             //out.println("<html><body><h1>"+con+"</h1><br><a href='index.html'>Volver</a></body></html>");
         }
+    }
+    
+    @Override
+    public void init() throws ServletException {
+        super.init(); //To change body of generated methods, choose Tools | Templates.
+        ArrayList l = ListaResultados.getInstance().getLista();
+        getServletContext().setAttribute("listaResultados", l);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

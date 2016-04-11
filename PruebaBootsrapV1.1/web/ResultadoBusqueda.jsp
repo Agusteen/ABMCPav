@@ -4,6 +4,7 @@
     Author     : agust
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,62 +19,26 @@
         <link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css">
     </head>
     <body>
-        
+
         <div id="wrap">
-            
+
             <div id="header">
                 <jsp:include page="header.jsp"/>
             </div>
-            
+
             <!-- Comienza panel de resultados -->
             <div id="content">
                 <div class="col-md-8 col-md-offset-2" style="margin-top: 1.5%">          
 
                     <!--<div class="panel panel-default">
-                        <div class="panel-body">-->
+                        <div class="panel-body">-->                   
 
-                    <div class="list-group">                        
-                        <a href="#" class="list-group-item">
-                            <span class="badge">14</span>
-                            <h1 class="list-group-item-heading">Título del elemento de la lista</h1>
-                            <p class="list-group-item-text">Detalle del elemento de la lista. Detalle del elemento de la lista. Detalle del elemento de la lista... Detalle del elemento de la lista. Detalle del elemento de la lista. Detalle del elemento de la lista... </p>
-                        </a>
-
-                        <a href="#" class="list-group-item"><h1 class="list-group-item-heading">Título del elemento de la lista</h1>
-                            <p class="list-group-item-text">Detalle del elemento de la lista. Detalle del elemento de la lista. Detalle del elemento de la lista...</p>
-                        </a> 
-
-                        <a href="#" class="list-group-item"><h2 class="list-group-item-heading">Título del elemento de la lista</h2>
-                            <p class="list-group-item-text">Detalle del elemento de la lista. Detalle del elemento de la lista. Detalle del elemento de la lista...</p>
-                        </a>
-                        <a href="#" class="list-group-item"><h2 class="list-group-item-heading">Título del elemento de la lista</h2>
-                            <p class="list-group-item-text">Detalle del elemento de la lista. Detalle del elemento de la lista. Detalle del elemento de la lista... Detalle del elemento de la lista. Detalle del elemento de la lista. Detalle del elemento de la lista... Detalle del elemento de la lista. Detalle del elemento de la lista. Detalle del elemento de la lista... Detalle del elemento de la lista. Detalle del elemento de la lista. Detalle del elemento de la lista...</p>
-                        </a>
-                        <a href="#" class="list-group-item"><h3 class="list-group-item-heading">Título del elemento de la lista</h3>
-                            <p class="list-group-item-text">Detalle del elemento de la lista. Detalle del elemento de la lista. Detalle del elemento de la lista...</p>
-                        </a> 
-
-                        <a href="#" class="list-group-item">
-                            <span class="badge">14</span>
-                            <h3 class="list-group-item-heading">Título del elemento de la lista</h3>
-                            <p class="list-group-item-text">Detalle del elemento de la lista. Detalle del elemento de la lista. Detalle del elemento de la lista... Detalle del elemento de la lista. Detalle del elemento de la lista. Detalle del elemento de la lista... </p>
-                        </a>
-                        <a href="#" class="list-group-item"><h3 class="list-group-item-heading">Título del elemento de la lista</h3>
-                            <p class="list-group-item-text">Detalle del elemento de la lista. Detalle del elemento de la lista. Detalle del elemento de la lista...</p>
-                        </a>
-                        <a href="#" class="list-group-item"><h4 class="list-group-item-heading">Título del elemento de la lista</h4>
-                            <p class="list-group-item-text">Detalle del elemento de la lista. Detalle del elemento de la lista. Detalle del elemento de la lista... Detalle del elemento de la lista. Detalle del elemento de la lista. Detalle del elemento de la lista... Detalle del elemento de la lista. Detalle del elemento de la lista. Detalle del elemento de la lista... Detalle del elemento de la lista. Detalle del elemento de la lista. Detalle del elemento de la lista...</p>
-                        </a>
-                        <a href="#" class="list-group-item"><h4 class="list-group-item-heading">Título del elemento de la lista</h4>
-                            <p class="list-group-item-text">Detalle del elemento de la lista. Detalle del elemento de la lista. Detalle del elemento de la lista...</p>
-                        </a> 
-
-                        <a href="#" class="list-group-item">
-                            <span class="badge">14</span>
-                            <h4 class="list-group-item-heading">Título del elemento de la lista</h4>
-                            <p class="list-group-item-text">Detalle del elemento de la lista. Detalle del elemento de la lista. Detalle del elemento de la lista... Detalle del elemento de la lista. Detalle del elemento de la lista. Detalle del elemento de la lista... </p>
-                        </a>
-
+                        <c:forEach items="${listaResultados}" var="r" >                            
+                            <a href="#" class="list-group-item"><span class="badge"> <c:out value="${r.getNombreArchivo()}"> - </c:out> </span>
+                                <h2 class="list-group-item-heading"> <c:out value="${r.titulo}">No especificado</c:out></h2>  
+                                <p class="list-group-item-text"> <c:out value="${r.detalle}"></c:out></p></a>    
+                        </c:forEach>  
+                        
                     </div>
 
                     <!--</div>
@@ -88,7 +53,7 @@
                 <h5>Muñoz Campos, Agustín (62846) - Ramirez, Nicolás (63318) - DLC - UTN FRC 2016</h5>
             </div>
         </div>
-        
-        
+
+
     </body>
 </html>
