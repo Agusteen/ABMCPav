@@ -4,6 +4,7 @@
     Author     : agust
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,6 +21,7 @@
     </head>
     <body>
 
+
         <div id="wrap">
 
             <div id="header">
@@ -33,7 +35,7 @@
                     <!--<div class="panel panel-default">
                         <div class="panel-body">-->                   
 
-                        <c:forEach items="${listaResultados}" var="r" >                            
+                        <c:forEach items="${listado}" var="r" >                            
                             <a href="#" class="list-group-item"><span class="badge"> <c:out value="${r.getNombreArchivo()}"> - </c:out> </span>
                                 <h2 class="list-group-item-heading"> <c:out value="${r.titulo}">No especificado</c:out></h2>  
                                 <p class="list-group-item-text"> <c:out value="${r.detalle}"></c:out></p></a>    
@@ -46,7 +48,7 @@
                 </div>
             </div>
         </div>
-
+    
         <!-- Comienza pie de pagina -->
         <div id="footer">
             <div class="piedepagina">

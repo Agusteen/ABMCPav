@@ -35,9 +35,16 @@ public class Consulta extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String con = request.getParameter("lblConsulta");
             
+            //mandas 'con' al procesador, el metodo deberia retornar una lista con las urls de las direcciones de los archivos ordenados para ser mostrados.
+            
+            
+            ListaResultados.getInstance().nuevaLista();
+            
             Resultado r = new Resultado();
-            r.obtenerDatos("G:\\DocPrueba\\1.txt");
+            r.obtenerDatos("G:\\DocPrueba\\1.txt");           
             ListaResultados.getInstance().getLista().add(r);
+            //ListaResultados.getLista().add(r);
+            
             
             Resultado r1 = new Resultado();
             r1.obtenerDatos("G:\\DocPrueba\\2.txt");
@@ -45,11 +52,11 @@ public class Consulta extends HttpServlet {
             
             Resultado r2 = new Resultado();
             r2.obtenerDatos("G:\\DocPrueba\\3.txt");
-            ListaResultados.getInstance().getLista().add(r2);
+            
             
             Resultado r3 = new Resultado();
             r3.obtenerDatos("G:\\DocPrueba\\4.txt");
-            ListaResultados.getInstance().getLista().add(r3);
+            
             response.sendRedirect("ResultadoBusqueda.jsp?consulta=" + con);
             
 
@@ -60,8 +67,8 @@ public class Consulta extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init(); //To change body of generated methods, choose Tools | Templates.
-        ArrayList l = ListaResultados.getInstance().getLista();
-        getServletContext().setAttribute("listaResultados", l);
+        ArrayList lista = ListaResultados.getInstance().getLista();
+        getServletContext().setAttribute("listado", lista);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
