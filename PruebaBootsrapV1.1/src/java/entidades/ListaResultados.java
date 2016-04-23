@@ -1,5 +1,6 @@
 package entidades;
 
+import Controladores.Resultado;
 import java.util.ArrayList;
 
 public class ListaResultados {

@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import Controladores.Resultado;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import entidades.*;
 import java.util.ArrayList;
+import logica.Coordinador;
 
 /**
  *
@@ -38,24 +40,29 @@ public class Consulta extends HttpServlet {
             //mandas 'con' al procesador, el metodo deberia retornar una lista con las urls de las direcciones de los archivos ordenados para ser mostrados.
             
             
-            ListaResultados.getInstance().nuevaLista();
+//            ListaResultados.getInstance().nuevaLista();
             
-            Resultado r = new Resultado();
-            r.obtenerDatos("G:\\DocPrueba\\1.txt");           
-            ListaResultados.getInstance().getLista().add(r);
-            //ListaResultados.getLista().add(r);
+//            Resultado r = new Resultado();
+//            r.obtenerDatos("G:\\DocPrueba\\1.txt");           
+//            ListaResultados.getInstance().getLista().add(r);
+//            //ListaResultados.getLista().add(r);
+//            
+//            
+//            Resultado r1 = new Resultado();
+//            r1.obtenerDatos("G:\\DocPrueba\\2.txt");
+//            ListaResultados.getInstance().getLista().add(r1);
+//            
+//            Resultado r2 = new Resultado();
+//            r2.obtenerDatos("G:\\DocPrueba\\3.txt");
+//            
+//            
+//            Resultado r3 = new Resultado();
+//            r3.obtenerDatos("G:\\DocPrueba\\4.txt");
             
-            
-            Resultado r1 = new Resultado();
-            r1.obtenerDatos("G:\\DocPrueba\\2.txt");
-            ListaResultados.getInstance().getLista().add(r1);
-            
-            Resultado r2 = new Resultado();
-            r2.obtenerDatos("G:\\DocPrueba\\3.txt");
-            
-            
-            Resultado r3 = new Resultado();
-            r3.obtenerDatos("G:\\DocPrueba\\4.txt");
+            Coordinador c = new Coordinador();
+           c.loadDocs("C:\\Users\\nicor_000\\Documents\\GitHub\\1.txt");
+           c.loadDocs("C:\\Users\\nicor_000\\Documents\\GitHub\\2.txt");
+           c.processdocs();
             
             response.sendRedirect("ResultadoBusqueda.jsp?consulta=" + con);
             
